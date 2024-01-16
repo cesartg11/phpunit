@@ -7,13 +7,15 @@
     </h1>
     <div class="flex flex-row w-full gap-5 m-5">
         @foreach ($animales as $animal)
-        <div class="gap-5 w-3/12 ">
-            <img src="assets/imagenes/{{ $animal['imagen'] }}" alt="imagen de {{$animal['especie']}}">
-            <p>Animal: {{ $animal['especie'] }} ,peso: {{ $animal['peso'] }}, altura: {{ $animal['altura'] }} , fecha de
-                nacimiento: {{ $animal['fechaNacimiento'] }}, alimentacion:
-                {{ $animal['alimentacion'] }}</p><br>
-        </div>
-    @endforeach
+            <div class="gap-5 w-3/12 ">
+                <img src="assets/imagenes/{{ $animal['imagen'] }}" alt="imagen de {{ $animal['especie'] }}">
+                <p>Animal: {{ $animal['especie'] }}</p>
+                <p>Peso: {{ $animal['peso'] }}</p>
+                <p>Altura: {{ $animal['altura'] }}</p>
+                <p>Fecha de nacimiento: {{ $animal['fechaNacimiento'] }}</p>
+                <p>Alimentacion:{{ $animal['alimentacion'] }}</p>
+                <a href="{{ url("animales/{$animal['especie']}") }}">Ver Detalles</a>
+            </div>
+        @endforeach
     </div>
-
 @endsection

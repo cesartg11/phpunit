@@ -3,17 +3,21 @@
 @section('contenido')
 
     <h1 class="text-3xl font-bold underline">
-        pagina de listar annimal concreto: "{{ $animal }}"
+        Página de listar animal concreto: "{{ $animal['especie'] }}"
     </h1>
     <div class="flex flex-row ">
-        <div >
+        <div>
             <img src="assets/imagenes/{{ $animal['imagen'] }}" alt="imagen de {{ $animal['especie'] }}">
+        </div>
+        <div>
             <p>Animal: {{ $animal['especie'] }} </p>
             <p>Peso: {{ $animal['peso'] }}</p>
             <p>Altura: {{ $animal['altura'] }}</p>
             <p>Fecha de nacimiento: {{ $animal['fechaNacimiento'] }}</p>
             <p>Alimentacion: {{ $animal['alimentacion'] }}</p>
-            <p>Descripción : {{ $animal['descripcion'] }}</p><br>
+            <p>Descripción : {{ $animal['descripcion'] }}</p>
+            <button><a href="{{ route('animales.edit', ['animal' => $animal['especie']]) }}">Editar animal</a></button>
+            <button><a href="{{ route('animales.index') }}">Volver</a></button>
         </div>
     </div>
 @endsection

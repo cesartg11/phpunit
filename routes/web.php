@@ -34,7 +34,6 @@ Route::get('/', InicioController::class)->name('inicio');
 });*/
 
 /*Sin hacer un grupo de rutas*/
-
 Route::get('/', InicioController::class)->name('inicio');
 
 Route::get('animales', [AnimalController::class, 'index'])->name('animales.index');
