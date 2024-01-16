@@ -26,15 +26,15 @@ Route::get('/', function () {
 Route::get('/', InicioController::class)->name('inicio');
 
 /*Aqui agrupamos todas las que esten dentro del controlador AnimalController*/
-Route::controller(AnimalController::class)->group(function(){
+/*Route::controller(AnimalController::class)->group(function(){
     Route::get('animales','index')->name('animales.index');
     Route::get('animales','create')->name('animales.create');
     Route::get('animales','show')->name('animales.show');
     Route::get('animales','edit')->name('animales.edit');
-});
+});*/
 
 /*Sin hacer un grupo de rutas*/
-/*
+
 Route::get('/', InicioController::class)->name('inicio');
 
 Route::get('animales', [AnimalController::class, 'index'])->name('animales.index');
@@ -44,4 +44,6 @@ Route::get('animales/crear', [AnimalController::class, 'create'])->name('animale
 Route::get('animales/{animal}', [AnimalController::class, 'show'])->name('animales.show');
 
 Route::get('animales/{animal}/editar', [AnimalController::class, 'edit'])->name('animales.edit');
-*/
+
+
+

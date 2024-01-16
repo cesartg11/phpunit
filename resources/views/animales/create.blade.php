@@ -2,6 +2,6 @@
 @section('titulo', 'Zoologico')
 @section('contenido')
     <h1 class="text-3xl font-bold underline">
-        Pagina principal del zoologico
+       pagina de crear annimal
     </h1>
 @endsection
