@@ -2,14 +2,15 @@
 @section('titulo', 'Zoologico')
 @section('contenido')
     <h1 class="text-3xl font-bold underline">
-        Página de editar annimal
+        Página de editar annimal {$animal['especie']}
     </h1>
-    <form action="" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
 
         @csrf
 
         <label for="especie">Modifica la especie</label>
         <input type="text" id="especie" name="especie" value="{$animal['especie']}">
+
         <label for="peso">Modifica el peso</label>
         <input type="text" id="peso" name="peso" value="{$animal['peso']}">
 

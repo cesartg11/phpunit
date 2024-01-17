@@ -4,7 +4,7 @@
     <h1 class="text-3xl font-bold underline">
         Página de crear annimal
     </h1>
-    <form action="" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
 
         @csrf
 

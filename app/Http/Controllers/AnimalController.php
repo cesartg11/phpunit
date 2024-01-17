@@ -95,7 +95,7 @@ Son diurnos y viven preferentemente en el suelo. Forman grupos numerosos que se 
      */
     public function index()
     {
-        return view('animales.index', ['animales' => $this->animales]);
+        return view('animales.index')->with(['animales' => $this->animales]);
     }
 
     /**
@@ -119,13 +119,13 @@ Son diurnos y viven preferentemente en el suelo. Forman grupos numerosos que se 
      */
     public function show(String $animal)
     {
-        return view('animales.show', ($this->animales[$animal]));
+        return view('animales.show')->with(['animales' => $this->animales[$animal]]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $animal)
+    public function edit(int $animal = 0)
     {
         return view('animales.edit', ['animal' => $animal]);
     }

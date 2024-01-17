@@ -7,7 +7,7 @@
     </h1>
     <div class="flex flex-row ">
         <div>
-            <img src="assets/imagenes/{{ $animal['imagen'] }}" alt="imagen de {{ $animal['especie'] }}">
+            <img src="assets/imagenes/{{ $animal['imagen'] }}" alt="Imagen de {{ $animal['especie'] }}">
         </div>
         <div>
             <p>Animal: {{ $animal['especie'] }} </p>
@@ -16,7 +16,7 @@
             <p>Fecha de nacimiento: {{ $animal['fechaNacimiento'] }}</p>
             <p>Alimentacion: {{ $animal['alimentacion'] }}</p>
             <p>Descripción : {{ $animal['descripcion'] }}</p>
-            <button><a href="{{ route('animales.edit', ['animal' => $animal['especie']]) }}">Editar animal</a></button>
+            <button><a href="{{ route('animales.edit', 0)}}">Editar animal</a></button>
             <button><a href="{{ route('animales.index') }}">Volver</a></button>
         </div>
     </div>
