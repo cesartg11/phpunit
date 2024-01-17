@@ -2,14 +2,14 @@
 @section('titulo', 'Zoologico')
 @section('contenido')
 
-    <h1 class="text-3xl font-bold underline">
+    <h1 class="text-3xl font-bold underline m-5">
         Página de listar animal concreto: "{{ $animal['especie'] }}"
     </h1>
-    <div class="flex flex-row ">
-        <div>
-            <img src="assets/imagenes/{{ $animal['imagen'] }}" alt="Imagen de {{ $animal['especie'] }}">
+    <div class="flex flex-row">
+        <div class="m-5">
+            <img src="{{ asset('assets/imagenes/'. $animal['imagen']) }} alt="Imagen de {{ $animal['especie'] }}">
         </div>
-        <div>
+        <div class="m-5">
             <p>Animal: {{ $animal['especie'] }} </p>
             <p>Peso: {{ $animal['peso'] }}</p>
             <p>Altura: {{ $animal['altura'] }}</p>

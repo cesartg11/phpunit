@@ -13,6 +13,4 @@ class InicioController extends Controller
     {
         return redirect()->action([AnimalController::class,'index']);
     }
-
-
 }
