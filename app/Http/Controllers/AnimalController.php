@@ -95,7 +95,7 @@ Son diurnos y viven preferentemente en el suelo. Forman grupos numerosos que se 
      */
     public function index()
     {
-        return view('animales.index', ['animales'=>$this->animales]);
+        return view('animales.index', ['animales' => $this->animales]);
     }
 
     /**

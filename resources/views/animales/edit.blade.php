@@ -2,7 +2,7 @@
 @section('titulo', 'Zoologico')
 @section('contenido')
     <h1 class="text-3xl font-bold underline">
-       Página de editar annimal
+        Página de editar annimal
     </h1>
     <form action="" enctype="multipart/form-data">
 
