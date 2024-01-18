@@ -17,7 +17,7 @@
                 <a href="{{ route('animales.show', $animal['especie']) }}">Ver detalles de {{ $animal['especie'] }}</a>
             </div>
         @empty
-            <p>No hay aniomales que mostrar</p>
+            <p>No hay animales que mostrar</p>
         @endforelse
     </div>
 @endsection
