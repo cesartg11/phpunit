@@ -9,22 +9,22 @@
         @csrf
 
         <label for="especie">Modifica la especie</label>
-        <input type="text" id="especie" name="especie" value="{$animal['especie']}">
+        <input type="text" id="especie" name="especie" value="{$animal->especie}">
 
         <label for="peso">Modifica el peso</label>
-        <input type="text" id="peso" name="peso" value="{$animal['peso']}">
+        <input type="text" id="peso" name="peso" value="{$animal->peso}">
 
         <label for="altura">Modifica la altura</label>
-        <input type="text" id="altura" name="altura" value="{$animal['altura']}">
+        <input type="text" id="altura" name="altura" value="{$animal->altura}">
 
         <label for="fecha">Modifica la fecha de nacimiento</label>
-        <input type="date" id="fecha" name="fecha" value="{$animal['fechaNacimiento']}">
+        <input type="date" id="fecha" name="fecha" value="{$animal->fechaNacimiento}">
 
         <label for="alimentación">Modifica la alimentación</label>
-        <input type="date" id="alimentación" name="alimentación" value="{$animal['alimentacion']}">
+        <input type="date" id="alimentación" name="alimentación" value="{$animal->alimentacion}">
 
         <label for="imagen">Modifica la imagen</label>
-        <input type="file" id="imagen" name="imagen" value="{$animal['imagen']}">
+        <input type="file" id="imagen" name="imagen" value="{$animal->imagen}">
 
         <button type="submit" id="enviar" name="enviar">Modificar animal</button>
     </form>
