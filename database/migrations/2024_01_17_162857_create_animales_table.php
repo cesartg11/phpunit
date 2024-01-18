@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('especie')->unique();
             $table->string('slug')->unique();
-            $table->double('peso');
-            $table->double('altura');
+            $table->double('peso',6,1);
+            $table->double('altura',6,1);
             $table->date('fechaNacimiento');
-            $table->string('fechaNacimiento')->nullable();
             $table->string('imagen')->nullable();
-            $table->string('imagen')->nullable();
+            $table->string('alimentacion', 20)->nullable();
+            $table->text('descripcion')->nullable();
             $table->timestamps();
         });
     }
