@@ -1,31 +1,43 @@
 @extends('layouts.plantilla')
 @section('titulo', 'Zoologico')
 @section('contenido')
-    <h1 class="text-3xl font-bold underline">
-        Página de editar annimal {$animal['especie']}
+    <h1 class="text-3xl font-bold underline m-5">
+        Editar {{ $animal->especie }}:
     </h1>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data"
+        class="flex flex-col items-center justify-center w-full ml-20">
 
         @csrf
 
-        <label for="especie">Modifica la especie</label>
-        <input type="text" id="especie" name="especie" value="{$animal->especie}">
+        <div class="flex flex-col items-center gap-5 w-full">
 
-        <label for="peso">Modifica el peso</label>
-        <input type="text" id="peso" name="peso" value="{$animal->peso}">
+            <label for="especie">Modifica la especie</label>
+            <input class="border border-black rounded" type="text" id="especie" name="especie"
+                value="{{ $animal->especie }}">
 
-        <label for="altura">Modifica la altura</label>
-        <input type="text" id="altura" name="altura" value="{$animal->altura}">
+            <label for="peso">Modifica el peso</label>
+            <input class="border border-black rounded" type="text" id="peso" name="peso"
+                value="{{ $animal->peso }}">
 
-        <label for="fecha">Modifica la fecha de nacimiento</label>
-        <input type="date" id="fecha" name="fecha" value="{$animal->fechaNacimiento}">
+            <label for="altura">Modifica la altura</label>
+            <input class="border border-black rounded" type="text" id="altura" name="altura"
+                value="{{ $animal->altura }}">
 
-        <label for="alimentación">Modifica la alimentación</label>
-        <input type="date" id="alimentación" name="alimentación" value="{$animal->alimentacion}">
+            <label for="fecha">Modifica la fecha de nacimiento</label>
+            <input class="border border-black rounded" type="date" id="fecha" name="fecha"
+                value="{{ $animal->fechaNacimiento }}">
 
-        <label for="imagen">Modifica la imagen</label>
-        <input type="file" id="imagen" name="imagen" value="{$animal->imagen}">
+            <label for="alimentación">Modifica la alimentación</label>
+            <input class="border border-black rounded" type="text" id="alimentación" name="alimentación"
+                value="{{ $animal->alimentacion }}">
 
-        <button type="submit" id="enviar" name="enviar">Modificar animal</button>
+            <label for="imagen">Modifica la imagen</label>
+            <input class="border border-black rounded" type="file" id="imagen" name="imagen"
+                value="{{ $animal->imagen }}">
+
+            <button class="bverde" type="submit" id="enviar" name="enviar">Modificar animal</button>
+
+        </div>
+
     </form>
 @endsection

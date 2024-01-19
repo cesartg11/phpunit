@@ -5,16 +5,19 @@
     <h1 class="text-3xl font-bold underline m-5">
         Listado de animales
     </h1>
-    <div class="flex flex-row w-full gap-5 m-5">
+    <div class="flex flex-row flex-wrap gap-5 m-5">
         @forelse ($animales as $animal)
-            <div class="gap-5 w-3/12 ">
-                <img src="assets/imagenes/{{ $animal->imagen }}" alt="Imagen de {{ $animal->especie }}">
-                <p>Animal: {{ $animal->especie }}</p>
-                <p>Peso: {{ $animal->peso }}</p>
-                <p>Altura: {{ $animal->altura }}</p>
-                <p>Fecha de nacimiento: {{ $animal->fechaNacimiento }}</p>
-                <p>Alimentacion:{{ $animal->alimentacion }}</p>
-                <a href="{{ route('animales.show', $animal->especie) }}">Ver detalles de {{ $$animal->especie }}</a>
+            <div class="shadow-2xl hover:shadow-green-500/60">
+                <a href="{{ route('animales.show', $animal->especie) }}">
+                    <img src="{{ asset('assets/imagenes/' . $animal->imagen) }}" alt="Imagen de {{ $animal->especie }}">
+                    <div class="flex flex-col m-5">
+                        <p>Animal: {{ $animal->especie }}</p>
+                        <p>Peso: {{ $animal->peso }}</p>
+                        <p>Altura: {{ $animal->altura }}</p>
+                        <p>Fecha de nacimiento: {{ $animal->getEdad() }}</p>
+                        <p>Alimentacion:{{ $animal->alimentacion }}</p>
+                    </div>
+                </a>
             </div>
         @empty
             <p>No hay animales que mostrar</p>

@@ -1,31 +1,37 @@
 @extends('layouts.plantilla')
 @section('titulo', 'Zoologico')
 @section('contenido')
-    <h1 class="text-3xl font-bold underline">
-        Página de crear annimal
+    <h1 class="text-3xl font-bold underline m-5">
+        Crear annimal:
     </h1>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data"
+        class="flex flex-col items-center justify-center w-full ml-20">
 
         @csrf
 
-        <label for="especie">Introduce la especie</label>
-        <input type="text" id="especie" name="especie" required>
+        <div class="flex flex-col items-center gap-5 w-full">
 
-        <label for="peso">Introduce el peso</label>
-        <input type="text" id="peso" name="peso" required>
+            <label for="especie">Introduce la especie</label>
+            <input class="border border-black rounded" type="text" id="especie" name="especie">
 
-        <label for="altura">Introduce la altura</label>
-        <input type="text" id="altura" name="altura" required>
+            <label for="peso">Introduce el peso</label>
+            <input class="border border-black rounded" type="text" id="peso" name="peso">
 
-        <label for="fecha">Introduce la fecha de nacimiento</label>
-        <input type="date" id="fecha" name="fecha" required>
+            <label for="altura">Introduce la altura</label>
+            <input class="border border-black rounded" type="text" id="altura" name="altura">
 
-        <label for="alimentación">Introduce la alimentación</label>
-        <input type="date" id="alimentación" name="alimentación" required>
+            <label for="fecha">Introduce la fecha de nacimiento</label>
+            <input class="border border-black rounded" type="date" id="fecha" name="fecha">
 
-        <label for="imagen">Introduce la imagen</label>
-        <input type="file" id="imagen" name="imagen" required>
+            <label for="alimentación">Introduce la alimentación</label>
+            <input class="border border-black rounded" type="text" id="alimentación" name="alimentación">
 
-        <button type="submit" id="enviar" name="enviar">Añadir animal</button>
+            <label for="imagen">Introduce la imagen</label>
+            <input class="border border-black rounded" type="file" id="imagen" name="imagen">
+
+            <button class="bverde" type="submit" id="enviar" name="enviar">Añadir animal</button>
+
+        </div>
+
     </form>
 @endsection
