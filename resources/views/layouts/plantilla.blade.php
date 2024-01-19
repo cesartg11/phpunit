@@ -9,9 +9,9 @@
 </head>
 <body>
     @include('layouts.partials.nav')
-    <div class="container">
+
         @yield('contenido')
-    </div>
+
     @include('layouts.partials.footer')
 </body>
 </html>

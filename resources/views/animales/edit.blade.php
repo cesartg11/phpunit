@@ -4,12 +4,12 @@
     <h1 class="text-3xl font-bold underline m-5">
         Editar {{ $animal->especie }}:
     </h1>
-    <div class="flex flex-row items-center justify-center w-full">
+    <div class="flex flex-row items-center justify-center">
 
-        <img class="m-20" src="{{ asset('assets/imagenes/' . $animal->imagen) }}" alt="Imagen de {{ $animal->especie }}">
+        <img class="m-20 w-1/5" src="{{ asset('assets/imagenes/' . $animal->imagen) }}" alt="Imagen de {{ $animal->especie }}">
 
 
-        <form action="" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('animales.update', $animal) }}" method="POST" enctype="multipart/form-data"
             class="flex flex-col items-center justify-center w-full gap-2">
 
             @csrf

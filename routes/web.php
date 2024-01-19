@@ -23,6 +23,7 @@ Route::get('/', function () {
 /*Haciendo un grupo de rutas*/
 
 /*Esta de inicioController hay que hacerla, ya que es otro controlador*/
+
 Route::get('/', InicioController::class)->name('inicio');
 
 /*Aqui agrupamos todas las que esten dentro del controlador AnimalController*/
@@ -44,8 +45,5 @@ Route::get('animales/{animal}', [AnimalController::class, 'show'])->name('animal
 
 Route::get('animales/{animal}/editar', [AnimalController::class, 'edit'])->name('animales.edit');
 
-Route::post('animales.store', [AnimalController::class, 'store'])->name('animales.store');
-Route::post('animales.update', [AnimalController::class, 'update'])->name('animales.update');
-
-
-
+Route::post('animales', [AnimalController::class, 'store'])->name('animales.store');
+Route::put('animales/{animal}', [AnimalController::class, 'update'])->name('animales.update');
