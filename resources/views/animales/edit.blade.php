@@ -4,12 +4,15 @@
     <h1 class="text-3xl font-bold underline m-5">
         Editar {{ $animal->especie }}:
     </h1>
-    <form action="" method="POST" enctype="multipart/form-data"
-        class="flex flex-col items-center justify-center w-full ml-20">
+    <div class="flex flex-row items-center justify-center w-full">
 
-        @csrf
+        <img class="m-20" src="{{ asset('assets/imagenes/' . $animal->imagen) }}" alt="Imagen de {{ $animal->especie }}">
 
-        <div class="flex flex-col items-center gap-5 w-full">
+
+        <form action="" method="POST" enctype="multipart/form-data"
+            class="flex flex-col items-center justify-center w-full gap-2">
+
+            @csrf
 
             <label for="especie">Modifica la especie</label>
             <input class="border border-black rounded" type="text" id="especie" name="especie"
@@ -37,7 +40,7 @@
 
             <button class="bverde" type="submit" id="enviar" name="enviar">Modificar animal</button>
 
-        </div>
+    </div>
 
     </form>
 @endsection

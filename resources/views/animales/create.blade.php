@@ -9,7 +9,7 @@
 
         @csrf
 
-        <div class="flex flex-col items-center gap-5 w-full">
+        <div class="flex flex-col items-center gap-2 w-full">
 
             <label for="especie">Introduce la especie</label>
             <input class="border border-black rounded" type="text" id="especie" name="especie">
