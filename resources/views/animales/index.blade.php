@@ -14,7 +14,7 @@
                         <p>Animal: {{ $animal->especie }}</p>
                         <p>Peso: {{ $animal->peso }}</p>
                         <p>Altura: {{ $animal->altura }}</p>
-                        <p>Fecha de nacimiento: {{ $animal->getEdad() }}</p>
+                        <p>Edad: {{ $animal->getEdad() }}</p>
                         <p>Alimentacion:{{ $animal->alimentacion }}</p>
                     </div>
                 </a>

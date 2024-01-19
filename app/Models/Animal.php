@@ -10,8 +10,6 @@ class Animal extends Model
 {
     use HasFactory;
     protected $table = 'animales';
-    protected $primaryKey = 'id';
-    public $timestamps = false;
 
     public function getEdad()
     {

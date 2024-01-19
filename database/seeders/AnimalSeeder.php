@@ -98,8 +98,6 @@ Son diurnos y viven preferentemente en el suelo. Forman grupos numerosos que se 
      */
     public function run(): void
     {
-        DB::table('animales')->delete();
-
         foreach ($this->animales as $animal) {
             $a = new Animal();
             $a->especie = $animal['especie'];

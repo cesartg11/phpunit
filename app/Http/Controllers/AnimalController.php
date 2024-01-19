@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\models\animal;
+use Exception;
 
 class AnimalController extends Controller
 {
@@ -37,11 +38,11 @@ class AnimalController extends Controller
      */
     public function show(String $animal)
     {
-
-        $animal = Animal::where('especie', $animal)->first();
-
-        if (!$animal) {
-            abort(404);
+        try{
+            $animal = Animal::where('especie', $animal)->firstOrFail();
+            //Se puede hacer con find poniendo un id :)
+        }catch(Exception $e){
+            echo("Error".$e);
         }
 
         return view('animales.show')->with(['animal' => $animal]);
@@ -52,10 +53,11 @@ class AnimalController extends Controller
      */
     public function edit(string $animal)
     {
-        $animal = Animal::where('especie', $animal)->first();
-
-        if (!$animal) {
-            abort(404);
+        try{
+          $animal = Animal::where('especie', $animal)->firstOrFail();
+            //Se puede hacer con find poniendo un id :)
+        }catch(Exception $e){
+            echo("Error".$e);
         }
 
         return view('animales.edit', ['animal' => $animal]);
