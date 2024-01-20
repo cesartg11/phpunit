@@ -47,3 +47,13 @@ Route::get('animales/{animal}/editar', [AnimalController::class, 'edit'])->name(
 
 Route::post('animales', [AnimalController::class, 'store'])->name('animales.store');
 Route::put('animales/{animal}', [AnimalController::class, 'update'])->name('animales.update');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

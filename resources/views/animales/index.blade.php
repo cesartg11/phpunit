@@ -15,7 +15,7 @@
                         <p>Peso: {{ $animal->peso }}</p>
                         <p>Altura: {{ $animal->altura }}</p>
                         <p>Edad: {{ $animal->getEdad() }}</p>
-                        <p>Alimentacion:{{ $animal->alimentacion }}</p>
+                        <p>Alimentacion: {{ $animal->alimentacion }}</p>
                     </div>
                 </a>
             </div>

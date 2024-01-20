@@ -18,7 +18,7 @@ class CrearAnimalRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, mixed>
+     * @return array<string,mixed>
      */
     public function rules()
     {
@@ -29,7 +29,6 @@ class CrearAnimalRequest extends FormRequest
             'fechaNacimiento' => 'required',
             'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
         ];
-        /* */
     }
     public function attributes()
     {
@@ -52,10 +51,5 @@ class CrearAnimalRequest extends FormRequest
             'image.mimes' => 'El formato de la imagen no es el debido'
         ];
     }
-    /*
-    public function InsertarConValidacion(CrearClienteRequest $request)
-    {
-        //si entramos aqui, el formulario es válido.
-    }
-    */
+
 }

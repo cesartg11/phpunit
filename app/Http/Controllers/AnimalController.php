@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\models\animal;
 use Exception;
+use App\Http\Requests\CrearAnimalRequest;
 
 class AnimalController extends Controller
 {
@@ -28,10 +29,30 @@ class AnimalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, /*Animal $animal*/)
+    public function store(CrearAnimalRequest $request)
     {
+        // Crear una nueva instancia del modelo Animal
+        $animal = new Animal();
 
-        //return view('animales.show')->with(['animal' => $animal]);
+        // Asignar los valores de los campos de entrada
+        $animal->especie = $request->especie;
+        $animal->peso = $request->peso;
+        $animal->altura = $request->altura;
+        $animal->fechaNacimiento = $request->fechaNacimiento;
+        $animal->alimentacion = $request->alimentacion;
+        $animal->descripcion = $request->descripcion;
+
+        // Procesar la imagen
+        if ($request->hasFile('imagen')) {
+            $imagenPath = $request->imagen->store('images',  'public/assets/imagenes');
+            $animal->imagen = $imagenPath;
+        }
+
+        // Guardar el animal
+        $animal->save();
+
+        // Redireccionar a la vista detalle del animal creado
+        return redirect()->route('animales.show', $animal->especie);
     }
 
     /**
@@ -67,10 +88,25 @@ class AnimalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, /*Animal $animal*/)
+    public function update(CrearAnimalRequest $request, Animal $animal)
     {
+        // Actualizar los campos del animal
+        $animal->especie = $request->especie;
+        $animal->peso = $request->peso;
+        $animal->altura = $request->altura;
+        $animal->fechaNacimiento = $request->fechaNacimiento;
 
-        //return view('animales.show')->with(['animal' => $animal]);
+        // Procesar la nueva imagen (si se proporciona)
+        if ($request->hasFile('imagen')) {
+           $imagenPath = $request->imagen->store('images', 'public/assets/imagenes');
+           $animal->imagen = $imagenPath;
+        }
+
+        // Guardar los cambios
+        $animal->save();
+
+        // Redireccionar a la vista detalle del animal editado
+        return redirect()->route('animales.show', $animal->especie);
     }
 
     /**
