@@ -4,10 +4,9 @@
     <h1 class="text-3xl font-bold underline m-5">
         Crear annimal:
     </h1>
-    <form action="" method="POST" enctype="multipart/form-data" class="flex flex-col items-center justify-center w-full">
+    <form action="{{route('animales.store') }}" method="POST" enctype="multipart/form-data" class="flex flex-col items-center justify-center w-full">
 
         @csrf
-        @method('put')
 
         <div class="flex flex-col items-center gap-2 w-full">
 

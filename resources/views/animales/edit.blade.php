@@ -13,6 +13,7 @@
             class="flex flex-col items-center justify-center w-full gap-2">
 
             @csrf
+            @method('put')
 
             <label for="especie">Modifica la especie</label>
             <input class="border border-black rounded" type="text" id="especie" name="especie"

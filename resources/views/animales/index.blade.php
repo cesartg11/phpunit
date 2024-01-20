@@ -12,9 +12,9 @@
                     <img src="{{ asset('assets/imagenes/' . $animal->imagen) }}" alt="Imagen de {{ $animal->especie }}">
                     <div class="flex flex-col m-5">
                         <p>Animal: {{ $animal->especie }}</p>
-                        <p>Peso: {{ $animal->peso }}</p>
-                        <p>Altura: {{ $animal->altura }}</p>
-                        <p>Edad: {{ $animal->getEdad() }}</p>
+                        <p>Peso: {{ $animal->peso }} kg</p>
+                        <p>Altura: {{ $animal->altura }} cm</p>
+                        <p>Edad: {{ $animal->getEdad() }} años</p>
                         <p>Alimentacion: {{ $animal->alimentacion }}</p>
                     </div>
                 </a>
