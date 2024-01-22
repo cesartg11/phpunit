@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\models\animal;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Exception;
+use PDOException;
 use App\Http\Requests\CrearAnimalRequest;
 
 class AnimalController extends Controller
@@ -19,7 +22,7 @@ class AnimalController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource.ñ
      */
     public function create()
     {
@@ -35,21 +38,28 @@ class AnimalController extends Controller
         $animal = new Animal();
 
         // Asignar los valores de los campos de entrada
-        $animal->especie = $request->especie;
-        $animal->peso = $request->peso;
-        $animal->altura = $request->altura;
-        $animal->fechaNacimiento = $request->fechaNacimiento;
-        $animal->alimentacion = $request->alimentacion;
-        $animal->descripcion = $request->descripcion;
+        try {
+            // Actualizar los campos del animal
+            $animal->especie = $request->input('especie');
+            $slug = Str::slug($request->input('especie'));
+            $animal->slug = $slug;
+            $animal->peso = $request->input('peso');
+            $animal->altura = $request->input('altura');
+            $animal->fechaNacimiento = $request->input('fechaNacimiento');
+            $animal->alimentacion = $request->input('alimentacion');
+            $animal->descripcion = $request->input('descripcion');
 
-        // Procesar la imagen
-        if ($request->hasFile('imagen')) {
-            $imagenPath = $request->imagen->store('images',  'public/assets/imagenes');
-            $animal->imagen = $imagenPath;
+            // Procesar la nueva imagen (si se proporciona)
+            if ($request->hasFile('imagen') && !empty($request->imagen) && $request->imagen->isValid()) {
+                Storage::disk('animales')->delete($animal->imagen);
+                $animal->imagen = $request->file('imagen')->store('', 'animales');
+            }
+
+            // Guardar los cambios
+            $animal->save();
+        } catch (PDOException $p) {
+            echo ("Error:" . $p->getMessage());
         }
-
-        // Guardar el animal
-        $animal->save();
 
         // Redireccionar a la vista detalle del animal creado
         return redirect()->route('animales.show', $animal->especie);
@@ -88,22 +98,47 @@ class AnimalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CrearAnimalRequest $request, Animal $animal)
+    public function update(Request $request, Animal $animal)
     {
-        // Actualizar los campos del animal
-        $animal->especie = $request->especie;
-        $animal->peso = $request->peso;
-        $animal->altura = $request->altura;
-        $animal->fechaNacimiento = $request->fechaNacimiento;
 
-        // Procesar la nueva imagen (si se proporciona)
-        if ($request->hasFile('imagen')) {
-           $imagenPath = $request->imagen->store('images', 'public/assets/imagenes');
-           $animal->imagen = $imagenPath;
+        $request->validate([
+            'especie' => 'required|min:3',
+            'peso' => 'required',
+            'altura' => 'required',
+            'fechaNacimiento' => 'required',
+            'imagen' => 'image|mimes:jpeg,png,jpg,svg'
+        ], [
+            'especie.required' => 'la especie es obligatoria',
+            'especie.min' => '  Debe tener almenos 3 letras',
+            'peso.required' => 'el peso es obligatorio',
+            'altura.required' => 'la altura es obligatoria',
+            'fechaNacimiento.required' => 'la fecha de nacimiento es obligatoria',
+            'imagen.required' => 'la imagen es obligatoria',
+            'image.mimes' => 'El formato de la imagen no es el debido'
+        ]);
+
+        try {
+            // Actualizar los campos del animal
+            $animal->especie = $request->input('especie');
+            $slug = Str::slug($request->input('especie'));
+            $animal->slug = $slug;
+            $animal->peso = $request->input('peso');
+            $animal->altura = $request->input('altura');
+            $animal->fechaNacimiento = $request->input('fechaNacimiento');
+            $animal->alimentacion = $request->input('alimentacion');
+            $animal->descripcion = $request->input('descripcion');
+
+            // Procesar la nueva imagen (si se proporciona)
+            if ($request->hasFile('imagen') && !empty($request->imagen) && $request->imagen->isValid()) {
+                Storage::disk('animales')->delete($animal->imagen);
+                $animal->imagen = $request->file('imagen')->store('', 'animales');
+            }
+
+            // Guardar los cambios
+            $animal->save();
+        } catch (PDOException $p) {
+            echo ("Error:" . $p->getMessage());
         }
-
-        // Guardar los cambios
-        $animal->save();
 
         // Redireccionar a la vista detalle del animal editado
         return redirect()->route('animales.show', $animal->especie);

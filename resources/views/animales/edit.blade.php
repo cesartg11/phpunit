@@ -4,6 +4,14 @@
     <h1 class="text-3xl font-bold underline m-5">
         Editar {{ $animal->especie }}:
     </h1>
+
+    @if ($errors->any())
+        <p>Hubo errores</p>
+        <@foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>;
+    @endforeach
+    @endif
+
     <div class="flex flex-row items-center justify-center">
 
         <img class="m-20 w-1/5" src="{{ asset('assets/imagenes/' . $animal->imagen) }}" alt="Imagen de {{ $animal->especie }}">
@@ -34,6 +42,10 @@
             <label for="alimentación">Modifica la alimentación</label>
             <input class="border border-black rounded" type="text" id="alimentación" name="alimentación"
                 value="{{ $animal->alimentacion }}">
+
+            <label for="descripcion">Modifica la Descripción</label>
+            <input class="border border-black rounded" type="text" id="descripcion" name="descripcion"
+                value="{{ $animal->descripcion }}">
 
             <label for="imagen">Modifica la imagen</label>
             <input class="border border-black rounded" type="file" id="imagen" name="imagen"

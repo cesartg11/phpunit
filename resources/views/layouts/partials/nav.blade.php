@@ -14,25 +14,16 @@
                 <a href="{{ route('animales.create') }}" class="text-white">Nuevo Animal</a>
             </div>
             <div class="flex flex-col text-center lg:flex-row">
-                <?php
-                /*
-                <a href="{{route('login')}}" class="bblanco mb-1 lg:mr-4 lg:mb-0">Iniciar Sesion</a>
-                <a href="{{route('register')}}" class="bverde">Regístrate</a>
-                */
-                ?>
-                @auth
-                    <p class="text-white me-4">{{ auth()->user()->name }}</p>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a href="{{ route('logout') }}" class="bblanco"
-                            onclick="event.preventDefault(); this.closest('form').submit();">
-                            Cerrar Sesión
-                        </a>
-                    </form>
+                @if (Auth::check())
+                <span class="text-white mb-1 lg:mr-4 lg:mb-0">{{auth()->user()->name}}</span>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                    {{ csrf_field() }}
+                    <input type="submit" class="bblanco"  value="Cerrar Sesion">
+                </form>
                 @else
-                    <a href="{{ route('login') }}" class="bblanco mb-1 lg:mr-4 lg:mb-0">Iniciar Sesion</a>
-                    <a href="{{ route('register') }}" class="bverde">Regístrate</a>
-                @endauth
+                <a href="{{ route('login') }}" class="bblanco mb-1 lg:mr-4 lg:mb-0">Iniciar Sesion</a>
+                <a href="{{ route('register') }}" class="bverde">Regístrate</a>
+                @endif
             </div>
         </div>
     </div>

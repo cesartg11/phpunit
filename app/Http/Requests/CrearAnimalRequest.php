@@ -27,7 +27,7 @@ class CrearAnimalRequest extends FormRequest
             'peso' => 'required',
             'altura' => 'required',
             'fechaNacimiento' => 'required',
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
+            'imagen' => 'required|image|mimes:jpeg,png,jpg,svg'
         ];
     }
     public function attributes()
@@ -44,6 +44,7 @@ class CrearAnimalRequest extends FormRequest
     {
         return [
             'especie.required' => 'la especie es obligatoria',
+            'especie.min' => '  Debe tener almenos 3 letras',
             'peso.required' => 'el peso es obligatorio',
             'altura.required' => 'la altura es obligatoria',
             'fechaNacimiento.required' => 'la fecha de nacimiento es obligatoria',

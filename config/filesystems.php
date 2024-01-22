@@ -44,6 +44,12 @@ return [
             'throw' => false,
         ],
 
+        'animales' => [
+            'driver' => 'local',
+            'root' => public_path('assets/imagenes'),
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

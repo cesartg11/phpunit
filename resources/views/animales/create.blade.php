@@ -4,6 +4,14 @@
     <h1 class="text-3xl font-bold underline m-5">
         Crear annimal:
     </h1>
+
+    @if ($errors->any())
+        <p>Hubo errores</p>
+        <@foreach ($errors->all() as $error)
+            <p>{{$error}}</p>;
+        @endforeach
+    @endif
+
     <form action="{{route('animales.store') }}" method="POST" enctype="multipart/form-data" class="flex flex-col items-center justify-center w-full">
 
         @csrf
@@ -24,6 +32,9 @@
 
             <label for="alimentación">Introduce la alimentación</label>
             <input class="border border-black rounded" type="text" id="alimentación" name="alimentación">
+
+            <label for="descripcion">Introduce la descripción</label>
+            <input class="border border-black rounded" type="text" id="descripcion" name="descripcion">
 
             <label for="imagen">Introduce la imagen</label>
             <input class="border border-black rounded" type="file" id="imagen" name="imagen">
